@@ -16,9 +16,9 @@ function SignIn() {
                 createdAt: firebase.database.ServerValue.TIMESTAMP,
             });
         }
-
         Alert.success('SignedIn', 4000);
-        } catch(err) {
+        }
+        catch(err) {
             Alert.error(err.message, 4000);
         }
         
@@ -47,7 +47,7 @@ function SignIn() {
                </Row>
            </Grid>
        </Container>
-    )
+    );
 }
 
-export default SignIn
+export default SignIn;
