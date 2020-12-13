@@ -6,6 +6,7 @@ function Home() {
     return (
         <Grid fluid className="h-100">
             <Row>
+                Hello
                 <Col xs={24} md={8}>
                 <Sidebar />
                 </Col>

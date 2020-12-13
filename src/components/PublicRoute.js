@@ -13,8 +13,8 @@ function PublicRoute({ children, ...routeProps}) {
         </Container>
         );
     }
-    if(!profile && !isLoading){
-        return <Redirect to="/signin" />
+    if(profile && !isLoading){
+        return <Redirect to="/" />
     }
 
     return (
