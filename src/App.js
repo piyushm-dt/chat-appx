@@ -12,11 +12,11 @@ function App() {
   return (
     <ProfileProvider>
       <Switch>
-        <PublicRoute>
-          <SignIn path="/signin" />
+        <PublicRoute path="/signin">
+          <SignIn />
         </PublicRoute>
-        <PrivateRoute>
-          <Home path="/" />
+        <PrivateRoute path="/">
+          <Home />
         </PrivateRoute>
       </Switch>
     </ProfileProvider>
