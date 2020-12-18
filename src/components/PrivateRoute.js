@@ -20,7 +20,7 @@ function PrivateRoute({ children, ...routeProps}) {
         <Route {...routeProps}>
             {children}
         </Route>
-    )
+    );
 }
 
 export default PrivateRoute;

@@ -43,7 +43,7 @@ function Dashboard({ onSignOut }) {
           Sign Out
         </Button>
       </Drawer.Footer>
-    </AvatarUploadBtn>
+    </>
   );
 }
 

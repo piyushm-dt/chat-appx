@@ -21,7 +21,7 @@ function PublicRoute({ children, ...routeProps}) {
         <Route {...routeProps}>
             {children}
         </Route>
-    )
+    );
 }
 
 export default PublicRoute

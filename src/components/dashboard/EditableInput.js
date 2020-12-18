@@ -56,7 +56,7 @@ function EditableInput({
              }
              </InputGroup>
         </div>
-    )
+    );
 }
 
 export default EditableInput
