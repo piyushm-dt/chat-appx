@@ -10,6 +10,6 @@ function Sidebar() {
             bottom
         </div>
     )
-}
+};
 
-export default Sidebar
+export default Sidebar;

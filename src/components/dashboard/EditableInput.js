@@ -1,5 +1,5 @@
-import React, { useState, useCallback } from 'react'
-import { Alert, Icon, Input, InputGroup } from 'rsuite'
+import React, { useState, useCallback } from 'react';
+import { Alert, Icon, Input, InputGroup } from 'rsuite';
 
 function EditableInput({ 
     initialValue, 
@@ -53,7 +53,6 @@ function EditableInput({
              <InputGroup.Button onClick={onSaveClick}>
              <Icon icon="check" />
              </InputGroup.Button>
-
              }
              </InputGroup>
         </div>
