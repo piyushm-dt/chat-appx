@@ -5,6 +5,7 @@ import { useProfile } from '../../context/profile.context';
 import { useModelState } from '../../misc/customHooks';
 import { database, storage } from '../../misc/firebase';
 import ProfileAvatar from './ProfileAvatar';
+import { getUserUpdate } from '../../misc/Helper';
 
 const fileInputTypes =".png, .jpeg, .gif, .jpg";
 
@@ -43,8 +44,14 @@ function AvatarUploadBtn() {
             });
 
             const downloadUrl = await uploadAvatarResult.ref.getDownloadURL();
-            const userAvatarRef = database.ref(`/profiles/${profile.uid}`).child('avatar');
-            userAvatarRef.set(downloadUrl);
+
+            const updates = await getUserUpdate(
+              profile.uid,
+              'avatar',
+              downloadUrl,
+              database
+            );
+            await database.ref().update(updates);
 
             setIsLoading(false);
             Alert.info('Avatar Uploaded');
