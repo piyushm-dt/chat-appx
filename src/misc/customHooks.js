@@ -38,7 +38,7 @@ export function usePresence(uid) {
 
     userStatusRef.on('value', (snap) => {
       if(snap.exists()) {
-        const data = snap.value;
+        const data = snap.val();
         setPresence(data);
       }
     })

@@ -5,7 +5,7 @@ import { usePresence } from '../misc/customHooks'
 const getColor = (presence) => {
     if(!presence) return 'gray';
 
-    switch(presence){
+    switch(presence.state){
         case 'online': return 'green';
         case 'offline': return 'red';
         default: return 'red';
