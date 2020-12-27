@@ -7,10 +7,31 @@ import { auth } from '../../../misc/firebase';
 import ProfileAvatar from '../../dashboard/ProfileAvatar';
 import PresenceDot from '../../PresenceDot';
 import IconBtnControl from './IconBtnControl';
+import ImgBtnModel from './ImgBtnModel';
 import ProfileInfoBtnModel from './ProfileInfoBtnModel';
 
+
+const renderFileMessage = (file) => {
+
+  if(file.contentType.includes('image')) {
+    return <div className="height-220">
+      <ImgBtnModel src={file.url} fileName={file.name} />
+    </div>
+  }
+
+  if(file.contentType.includes('audio')) {
+    // eslint-disable-next-line jsx-a11y/media-has-caption
+    return <audio controls>
+      <source src={file.url} type="audio/mp3"/>
+      Audio element not supported
+    </audio>
+  }
+
+  return <a href={file.url} >Download {file.name}</a>
+}
+
 function MessageItem({message, handleAdmin, handleLike, handleDelete}) {
-    const { author, createdAt, text, likes, likeCount} = message;
+    const { author, createdAt, text, file, likes, likeCount} = message;
 
     const [selfRef, isHover] = useHover();
     const isMobile = useMediaQuery(('(max-width: 992px)'));
@@ -72,13 +93,16 @@ function MessageItem({message, handleAdmin, handleLike, handleDelete}) {
               isVisible={canShowicons}
               iconName="close"
               tooltip="Delete"
-              onClick={() => handleDelete(message.id)}
+              onClick={() => handleDelete(message.id, file)}
             />
           )
         }
         </div>
         <div>
+          {text &&
           <span className="word-break-all">{text}</span>
+          }
+          { file && renderFileMessage(file) }
         </div>
       </li>
     );

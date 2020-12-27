@@ -4,6 +4,8 @@ import { useParams } from 'react-router';
 import { InputGroup, Input, Icon, Alert } from 'rsuite';
 import { database } from '../../../misc/firebase';
 import { useProfile } from '../../../context/profile.context';
+import AttachmentBtnModel from './AttachmentBtnModel';
+import AudioMsgBtn from './AudioMsgBtn';
 
 function assembleMessage(profile, chatId) {
     return {
@@ -65,9 +67,38 @@ function Bottom() {
         }
     }
 
+    const afterUpload = useCallback(async (files)=>{
+        setIsLoading(true);
+        const updates = {};
+        files.forEach(file => {
+            const msgData = assembleMessage(profile, chatId);
+            msgData.file = file;
+            const messageId = database.ref('messages').push().key;
+            updates[`/messages/${messageId}`] = msgData ;
+        })
+
+        const lastMsgId = Object.keys(updates).pop();
+        updates[`/rooms/${chatId}/lastMessage`] = {
+            ...updates[lastMsgId],
+            msgId: lastMsgId,
+        };
+
+         try{
+            await database.ref().update(updates);
+            setIsLoading(false);
+        }
+        catch(err){
+            Alert.error(err.message, 4000);
+            setIsLoading(false);
+        }
+
+    },[chatId, profile]);
+
     return (
         <div>
             <InputGroup>
+            <AttachmentBtnModel afterUpload={afterUpload} />
+            <AudioMsgBtn afterUpload={afterUpload}/>
             <Input placeholder="write message..." 
             value={input} onChange={onInputChange}
             onKeyDown={onKeyDown}
