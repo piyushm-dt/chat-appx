@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 import 'firebase/storage';
+import 'firebase/messaging';
 
 const config = {
     apiKey: "AIzaSyCge8Mo6KFZI0ySU4Ln9XjOLuEbFTOifo4",
@@ -19,3 +20,5 @@ const config = {
   export const auth = app.auth();
   export const database = app.database();
   export const storage = app.storage();
+  export const messaging = firebase.messaging.isSupported() ? app.messaging() : null;
+  

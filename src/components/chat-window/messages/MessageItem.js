@@ -81,7 +81,7 @@ function MessageItem({message, handleAdmin, handleLike, handleDelete}) {
             className="font-normal text-black-50 ml-2"
           />
           <IconBtnControl
-            {...(isLiked ? { color: 'orange' } : {})}
+            {...(isLiked ? { color: 'red' } : {})}
             isVisible={canShowicons}
             iconName="heart"
             tooltip="Like"

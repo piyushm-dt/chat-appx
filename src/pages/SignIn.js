@@ -28,25 +28,25 @@ function SignIn() {
     };
 
     return (
-       <Container>
-           <Grid className="mt-page">
-               <Row>
-                   <Col xs={24} md={12} mdOffset={6}>
-                       <Panel>
-                           <div className="text-center">
-                               <h2>Welcome to Chat!</h2>
-                               <p>Progressive Chat Platform</p>
-                           </div>
-                           <div className="mt-3">
-                               <Button block color="red" onClick={onGoogleSignIn} >
-                                   <Icon icon="google" /> Continue with Google
-                               </Button>
-                           </div>
-                       </Panel>
-                   </Col>
-               </Row>
-           </Grid>
-       </Container>
+      <Container>
+        <Grid className="mt-page">
+          <Row>
+            <Col xs={24} md={12} mdOffset={6}>
+              <Panel>
+                  <div className="text-center">
+                    <h2>Welcome to Chat!</h2>
+                    <p>Progressive Chat Platform</p>
+                  </div>
+                <div className="mt-3">
+                  <Button block color="red" onClick={onGoogleSignIn}>
+                    <Icon icon="google" /> Continue with Google
+                  </Button>
+                </div>
+              </Panel>
+            </Col>
+          </Row>
+        </Grid>
+      </Container>
     );
 }
 
